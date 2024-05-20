@@ -10,6 +10,27 @@ function multiply() {
   performOperation((a, b) => a * b, "Multiplication");
 }
 
+function scalarMultiply() {
+  var scalar = parseFloat(prompt("Enter the scalar value:"));
+  if (isNaN(scalar)) {
+    alert("Please enter a valid scalar value.");
+    return;
+  }
+  
+  var matrixA = parseMatrix(document.getElementById('matrixA').value);
+  
+  var resultMatrix = [];
+  for (var i = 0; i < matrixA.length; i++) {
+    var row = [];
+    for (var j = 0; j < matrixA[0].length; j++) {
+      row.push(matrixA[i][j] * scalar);
+    }
+    resultMatrix.push(row);
+  }
+  
+  document.getElementById('result').innerHTML = `Scalar Multiplication Result (Scalar: ${scalar}): <br>` + formatMatrix(resultMatrix);
+}
+
 function performOperation(operation, operationName) {
   var matrixA = parseMatrix(document.getElementById('matrixA').value);
   var matrixB = parseMatrix(document.getElementById('matrixB').value);
